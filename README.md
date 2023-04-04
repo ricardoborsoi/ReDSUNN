@@ -24,6 +24,12 @@ The results are saved in `.mat` format in the `saved` folder. Then, you can eval
 
 
 
+### Downloading the datasets
+
+The datasets are available in Zenodo [here](https://zenodo.org/record/7796598#.ZCt8VC8iuEc), https://doi.org/10.5281/zenodo.7796597. Please download them and include the correct paths to them in the .json files to be able to run the examples.
+
+
+
 ### Running with other data
 
 To run the method with a different dataset, you need:  
