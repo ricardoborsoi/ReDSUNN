@@ -29,8 +29,8 @@ The results are saved in `.mat` format in the `saved` folder. Then, you can eval
 To run the method with a different dataset, you need:  
 -  `.mat` files with the hyperspectral image, and the reference/average endmember initialization (using VCA). 
 -  a `.json` configuration file specifying the parameters of the method and the path to the data files (see examples `config_synth_ex1.json`, `config_synth_ex2.json` and `config_Tahoe.json`). 
--  a data loader files, stored in the `data_loader` folder. First, a data loader file has to be created according to the examples in `mydataloader_synth_ex1.py`, `mydataloader_synth_ex2.py` and `mydataloader_Tahoe.py`. Then, a corresponding dataloader class must be added to the file `data_loaders.py`. Note that the path to the .mat file containing the image is passed to the data loaders from the .json file.  
--  a Matlab file to evaluate the resulta, if desired, according to the examples `evaluate_results_ex1.m`, `evaluate_results_ex2.m, `evaluate_results_ex_Tahoe.m`.  
+-  a data loader files, stored in the `data_loader` folder. First, a data loader file has to be created according to the examples in `mydataloader_synth_ex1.py`, `mydataloader_synth_ex2.py` and `mydataloader_Tahoe.py`. Then, a corresponding dataloader class must be added to the file `data_loaders.py`. Note that the path to the .mat file containing the image is passed to the data loaders from the `.json` file.  
+-  a Matlab file to evaluate the resulta, if desired, according to the examples `evaluate_results_ex1.m`, `evaluate_results_ex2.m`, `evaluate_results_ex_Tahoe.m`.  
 
 
 
