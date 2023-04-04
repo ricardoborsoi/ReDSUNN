@@ -1,0 +1,42 @@
+function nrmse_val = NRMSE_M(M_true, M_est)
+% M_true (L,P,nr,nc,T) 224     3    50    50     6
+% M_est : either L * P * T, or (L,P,nr,nc,T) 224     3    50    50     6
+
+[L,P,nr,nc,T] = size(M_true);
+
+if ~iscell(M_est) && length(size(M_est)) < 4
+    tmp = M_est;
+    M_est = cell(T,1);
+    for t=1:T
+        M_est{t} = tmp(:,:,t);
+    end
+end
+
+
+if iscell(M_est)
+    nrmse_val = 0;
+    for i=1:nr
+        for j=1:nc
+            for t=1:T
+                nrmse_val = nrmse_val + (1/(T*nr*nc)) * sum(sum( ...
+                    (M_true(:,:,i,j,t)-M_est{t}).^2)) ...
+                    / sum(sum(M_true(:,:,i,j,t).^2));
+            end
+        end
+    end
+    
+    
+else
+    nrmse_val = 0;
+    for i=1:nr
+        for j=1:nc
+            for t=1:T
+                nrmse_val = nrmse_val + (1/(T*nr*nc)) * sum(sum( ...
+                    (M_true(:,:,i,j,t)-M_est(:,:,i,j,t)).^2)) ...
+                    / sum(sum(M_true(:,:,i,j,t).^2));
+            end
+        end
+    end
+    
+end
+nrmse_val = sqrt(nrmse_val);

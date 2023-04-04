@@ -1,0 +1,85 @@
+{
+    "name": "DMM_rnn",
+    "n_gpu": 0,
+
+
+    "arch": {
+        "type": "DeepMarkovModel",
+        "args": {
+            "num_bands": 224,
+            "num_endmembers": 3,
+            "K": 10,
+            "sigma_psi": 0.00001,
+            "path_load_M0": "../../BFHI/baselines_VRNN/endmembers_vca_synth_ex1.mat",
+            "rnn_type": "lstm",
+            "rnn_layers": 1,
+            "rnn_bidirection": true,
+            "use_embedding": false,
+            "train_init": true,
+            "train_M0": true,
+            "mean_field": false,
+            "reverse_rnn_input": false,
+            "sample": true
+        }
+    },
+    "data_loader_train": {
+        "type": "SynthEx1DataLoader",
+        "args":{
+            "batch_size": 128,
+            "data_dir": "../../BFHI/baselines_VRNN/synth_dataset_ex1.mat",
+            "split": "train",
+            "shuffle": true,
+            "num_workers": 1
+        }
+    },
+    "data_loader_valid": {
+        "type": "SynthEx1DataLoader",
+        "args":{
+            "batch_size": 128,
+            "data_dir": "../../BFHI/baselines_VRNN/synth_dataset_ex1.mat",
+            "split": "valid",
+            "shuffle": false,
+            "num_workers": 1
+        }
+    },
+    "data_loader_test": {
+        "type": "SynthEx1DataLoader",
+        "args":{
+            "batch_size": 128,
+            "data_dir": "../../BFHI/baselines_VRNN/synth_dataset_ex1.mat",
+            "split": "test",
+            "shuffle": false,
+            "num_workers": 1
+        }
+    },
+    "optimizer": {
+        "type": "Adam",
+        "args":{
+            "lr": 0.001,
+            "weight_decay": 0.0,
+            "amsgrad": true,
+            "betas": [0.9, 0.999]
+        }
+    },
+    "loss": "dmm_loss",
+    "metrics": [
+        "bound_eval", "importance_sample"
+    ],
+    "trainer": {
+        "epochs": 30,
+        "overfit_single_batch": false,
+
+        "save_dir": "saved/",
+        "save_period": 500,
+        "verbosity": 2,
+        
+        "monitor": "min val_loss",
+        "early_stop": 100,
+
+        "tensorboard": false,
+
+        "min_anneal_factor": 0.0,
+        "anneal_update": 5000
+    }
+}
+
