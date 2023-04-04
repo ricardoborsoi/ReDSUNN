@@ -1,6 +1,6 @@
 #  Dynamical Hyperspectral Unmixing with Variational Recurrent Neural Networks    #
 
-This package contains the authors' implementation of ReDSUNN algorithm proposed in the paper [1].
+This package contains the implementation of ReDSUNN algorithm proposed in the paper [1].
 
 
 Multitemporal hyperspectral unmixing (MTHU) reveals the dynamical evolution of the materials (endmembers) and of their proportions (abundances) in a scene. In this work, we propose an unsupervised MTHU algorithm based on variational recurrent neural networks accounting for the spatial and temporal variability of the endmembers using a low-dimensional parametrization. An MTHU algorithm based on deep variational inference is proposed to tackle the nonlinearity of the model, in which the posterior distribution of the estimated abundances and endmembers is represented using recurrent neural networks and a physically motivated model.
